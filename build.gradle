@@ -66,8 +66,8 @@ minecraft {
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
     // Example:
-    // injectedTags.put('VERSION', project.version)
-    // injectedTags.put('MOD_ID', project.archives_base_name)
+     injectedTags.put('VERSION', project.version)
+     injectedTags.put('MOD_ID', project.archives_base_name)
 }
 
 // Generate a group.archives_base_name.Tags class
@@ -105,7 +105,16 @@ dependencies {
 
     // Example of deobfuscating a dependency
     // implementation rfg.deobf('curse.maven:had-enough-items-557549:4543375')
-
+    
+    //    implementation rfg.deobf('curse.maven:')
+    
+    implementation (
+            rfg.deobf('curse.maven:ImmersiveEngineering-231951:2974106'),
+            rfg.deobf('curse.maven:ImmersivePetroleum-268250:3382321')
+    )
+    
+    
+    
     if (project.use_mixins.toBoolean()) {
         // Change your mixin refmap name here:
         String mixin = modUtils.enableMixins('org.spongepowered:mixin:0.8.3', "mixins.${project.archives_base_name}.refmap.json")
